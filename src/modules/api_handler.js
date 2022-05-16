@@ -5,17 +5,17 @@ const getShows = async (id) => {
   return (await item).json();
 };
 
-const test = async () => {
-  for (let i = 1; i < 15; i += 1) {
-    const testt = getShows(i);
-    // console.log(testt);
-    const node = `
+const test = async (id) => {
+  const testt = await getShows(id);
+  // console.log(testt.image);
+  const node = `
       <li class="show">
         <img src="${testt.image.medium}" alt="#">
       </li>`;
-    const child = document.createRange().createContextualFragment(node);
-    shows.appendChild(child);
-  }
+  const child = document.createRange().createContextualFragment(node);
+  shows.appendChild(child);
 };
 
-test();
+for (let i = 1; i < 15; i += 1) {
+  test(i);
+}
