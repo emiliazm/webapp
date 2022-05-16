@@ -6,3 +6,13 @@
 h1 {
   text-align: center;
 }
+
+.show {
+  list-style: none;
+  float: left;
+  margin: 10px;
+}
+
+footer{
+  clear: both;
+}
