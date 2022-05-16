@@ -1,2 +1,2 @@
-import './styles.css'
-import './modules/api_handler.js'
+import './styles.css';
+import './modules/api_handler.js';
