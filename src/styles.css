@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-h1 {
-  text-align: center;
-}
-
 .show {
   list-style: none;
   float: left;
@@ -15,4 +11,45 @@ h1 {
 
 footer {
   clear: both;
+}
+
+.Nav-bar {
+  position: fixed;
+  width: 100vw;
+}
+
+.Nav-bar h1 {
+  line-height: 60px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+.Headline {
+  box-shadow: inset -300px 0 700px 10px #000;
+  background-color: gray;
+  padding: 0 30px;
+  justify-content: space-between;
+  height: 60vh;
+}
+
+.Headline-wrapper {
+  height: 100%;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Headline h2 {
+  background-color: black;
+  color: white;
+  font-size: 40px;
+  width: 100%;
+  text-align: center;
+  margin: auto 0;
+}
+
+#canvas {
+  aspect-ratio: 5/3;
+  width: 40vw;
 }
