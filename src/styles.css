@@ -13,6 +13,40 @@ footer {
   clear: both;
 }
 
+/* popup */
+.popups {
+  display: none;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 90%;
+  min-width: 320px;
+  overflow: auto;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px;
+  z-index: 1;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .Nav-bar {
   position: fixed;
   width: 100vw;
