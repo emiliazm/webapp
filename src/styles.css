@@ -88,3 +88,12 @@ footer {
   height: auto !important;
   width: 40vw !important;
 }
+
+.like-btn {
+  cursor: pointer;
+  color: gray;
+}
+
+.like-btn.liked {
+  color: red;
+}

@@ -1,4 +1,4 @@
-import { getShows } from './api_handler.js';
+import { getShows, like, getLikes } from './api_handler.js';
 
 const shows = document.querySelector('.shows');
 const pops = document.querySelector('.popups');
@@ -10,7 +10,7 @@ const popup = async (id) => {
   if (popCont) { pops.removeChild(popCont); }
 
   const node = `<div id="popCont">
-    <i class="close-icon material-symbols-outlined">close</i>
+    <i class="close-icon material-icons">close</i>
     <img class="film-img" src="${testt.image.medium}" alt="episode">
     <h2>"${testt.name}"</h2>
     <ul>
@@ -32,36 +32,49 @@ const popup = async (id) => {
   const child = document.createRange().createContextualFragment(node);
   pops.appendChild(child);
 
-  const closePopup = () => {
+  document.querySelector('.close-icon').onclick = () => {
     if (pops.classList.contains('display')) {
       pops.classList.remove('display');
     }
   };
-  document.querySelector('.close-icon').addEventListener('click', closePopup);
 };
 
-const test = async (id) => {
-  const testt = await getShows(id);
-  // console.log(testt);
-  const node = `<li class="show" id="li-${testt.id}">
-    <img src="${testt.image.medium}" alt="#">
-    <h2>"${testt.name}"</h2>
-    <i class="material-symbols-outlined">favorite</i>
+const drawFilm = async (id, likes) => {
+  const show = await getShows(id);
+  const data = {
+    item_id: id,
+  };
+  const node = `
+  <li class="show" id="li-${show.id}">
+    <img src="${show.image.medium}" alt="#">
+    <h2>"${show.name}"</h2>
+    <i class="material-icons like-btn">favorite</i>
+    <span>${likes}</span>
     <button class="comment-btn" type="button">Comments</button>
     <button class="reserv-btn" type="button">Reservations</button>
   </li>`;
   const child = document.createRange().createContextualFragment(node);
   shows.appendChild(child);
 
-  const commentBtn = (e) => {
+  shows.querySelector(`#li-${show.id} .comment-btn`).onclick = (e) => {
     popup(id);
     pops.classList.toggle('display', (e !== 'popups'));
   };
 
-  const commBtn = shows.querySelector(`#li-${testt.id} .comment-btn`);
-  commBtn.addEventListener('click', commentBtn);
+  shows.querySelector(`#li-${show.id} .like-btn`).onclick = (e) => {
+    like(data);
+    e.path[0].classList.toggle('liked');
+  };
 };
 
-for (let i = 1; i < 15; i += 1) {
-  test(i);
-}
+const render = async () => {
+  const likes = await getLikes();
+  for (let i = 1; i < 15; i += 1) {
+    likes.forEach((item) => {
+      if (i === item.item_id) {
+        drawFilm(i, item.likes);
+      }
+    });
+  }
+};
+render();

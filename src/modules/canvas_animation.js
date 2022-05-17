@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import '../assets/remoteController.gltf';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, 2, 1, 1000);
@@ -20,7 +21,7 @@ camera.rotation.x = 0.7;
 
 const loader = new GLTFLoader();
 let model;
-loader.load('./remoteController.gltf', (gltf) => {
+loader.load('./src/assets/remoteController.gltf', (gltf) => {
   model = gltf.scene;
   scene.add(model);
 });
