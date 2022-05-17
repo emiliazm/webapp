@@ -51,5 +51,6 @@ footer {
 
 #canvas {
   aspect-ratio: 5/3;
-  width: 40vw;
+  height: auto !important;
+  width: 40vw !important;
 }

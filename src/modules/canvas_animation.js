@@ -1,25 +1,29 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, 2, 1, 1000);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.getElementById('canvas'),
   alpha: true,
 });
 
-const camera = new THREE.PerspectiveCamera(70, 2, 1, 1000);
-camera.position.z = 400;
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-const scene = new THREE.Scene();
-const geometry = new THREE.BoxGeometry(200, 200, 200);
-const material = new THREE.MeshPhongMaterial({
-  color: 0x555555,
-});
-
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
-
-const light1 = new THREE.PointLight(0xff80C0, 2, 0);
+const light1 = new THREE.PointLight(0xffffff, 2, 0);
 light1.position.set(200, 200, 300);
 scene.add(light1);
+
+camera.position.y = -3;
+camera.position.z = 7;
+camera.rotation.x = 0.7;
+
+const loader = new GLTFLoader();
+let model;
+loader.load('./remoteController.gltf', (gltf) => {
+  model = gltf.scene;
+  scene.add(model);
+});
 
 function resizeCanvasToDisplaySize() {
   const canvas = renderer.domElement;
@@ -30,21 +34,16 @@ function resizeCanvasToDisplaySize() {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-
-    // set render target sizes here
   }
 }
 
-function animate(time) {
-  time *= 0.001; // seconds
-
+const animate = () => {
   resizeCanvasToDisplaySize();
-
-  mesh.rotation.y = time * 0.5;
-  mesh.rotation.z = time * 0.3;
-
-  renderer.render(scene, camera);
   requestAnimationFrame(animate);
-}
+  if (model !== undefined) {
+    model.rotation.y += 0.007;
+  }
+  renderer.render(scene, camera);
+};
 
-requestAnimationFrame(animate);
+animate();
