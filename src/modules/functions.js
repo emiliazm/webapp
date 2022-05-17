@@ -2,6 +2,7 @@ import { getShows } from './api_handler.js';
 
 const shows = document.querySelector('.shows');
 const pops = document.querySelector('.popups');
+const modal = document.querySelector('.modal')
 
 const popup = async (id) => {
   const testt = await getShows(id);
@@ -35,6 +36,7 @@ const popup = async (id) => {
   const closePopup = () => {
     if (pops.classList.contains('display')) {
       pops.classList.remove('display');
+      modal.classList.remove('overlay');
     }
   };
   document.querySelector('.close-icon').addEventListener('click', closePopup);
@@ -56,6 +58,7 @@ const test = async (id) => {
   const commentBtn = (e) => {
     popup(id);
     pops.classList.toggle('display', (e !== 'popups'));
+    modal.classList.toggle('overlay', (e !== 'modal'));
   };
 
   const commBtn = shows.querySelector(`#li-${testt.id} .comment-btn`);
