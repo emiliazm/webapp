@@ -22,7 +22,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: grey;
+  background-color: rgb(176, 216, 199);
   z-index: 2;
   position: fixed;
   top: 50%;
@@ -34,8 +34,8 @@ footer {
   overflow: auto;
 }
 
-.modal {
-  display: none;
+.overlay {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -44,7 +44,7 @@ footer {
   min-width: 320px;
   z-index: 1;
   background-color: black;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .Nav-bar {
