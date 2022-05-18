@@ -31,6 +31,7 @@
   "homepage": "https://github.com/emiliazm/webapp#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@testing-library/jest-dom": "^5.16.4",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
