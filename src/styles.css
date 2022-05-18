@@ -30,6 +30,12 @@
   margin: 0 auto;
 }
 
+h2,
+h3 {
+  width: fit-content;
+  margin: 0;
+}
+
 .Headline h2 {
   background-color: black;
   padding: 10px;
@@ -74,6 +80,14 @@
 }
 
 /* popup */
+
+.close-icon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 2em;
+}
+
 #popCont {
   background-size: cover;
   background-position: center;
@@ -83,7 +97,6 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 #popCont .close-icon {
@@ -103,10 +116,6 @@
   margin: 10px 0;
 }
 
-#popCont .comments-title {
-  margin-bottom: auto;
-}
-
 .popups {
   display: none;
 }
@@ -114,21 +123,20 @@
 .display {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: grey;
-  z-index: 2;
+  align-content: center;
   position: fixed;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 60%;
   height: 90%;
   min-width: 320px;
   overflow: auto;
 }
 
-.modal {
-  display: none;
+.overlay {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -137,7 +145,39 @@
   min-width: 320px;
   z-index: 1;
   background-color: black;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.film-features {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  width: 100%;
+  height: 5rem;
+}
+
+.popCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pop-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* form */
+.film-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+textarea {
+  resize: none;
 }
 
 footer {
