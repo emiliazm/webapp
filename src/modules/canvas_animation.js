@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import '../assets/remoteController.gltf';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, 2, 1, 1000);
@@ -10,8 +11,8 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const light1 = new THREE.PointLight(0xffffff, 2, 0);
-light1.position.set(200, 200, 300);
+const light1 = new THREE.PointLight(0xfffacd, 2, 0);
+light1.position.set(100, 200, 300);
 scene.add(light1);
 
 camera.position.y = -3;

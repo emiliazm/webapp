@@ -1,5 +1,7 @@
 import {
   getShows,
+  like,
+  getLikes,
   sendCommentApi,
   getCommentsApi,
 } from './api_handler.js';
@@ -55,20 +57,19 @@ const popup = async (id) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops.removeChild(popCont); }
 
-  const node = `<div id="popCont" data-id="${testt.id}">
-    <div class="pop-header">
-      <img class="film-img" src=${testt.image.medium} alt="episode">
-      <i class="close-icon material-symbols-outlined">close</i>
+  const node = `<div id="popCont" data-id="${testt.id}" style="background-image: url('${testt.image.original}');">
+    <i class="close-icon material-symbols-outlined">close</i>
+    <div class="container">
+      <h2>${testt.name}</h2>
+       <ul>
+         <li>${testt.averageRuntime}min</li>
+         <li>${testt.genres}</li>
+         <li>${testt.language}</li>
+         <li>${testt.premiered}</li>
+       </ul>
+       <p class="film-description">${testt.summary}</p>
     </div>
-    <h2 class="pop-h2">${testt.name}</h2>
-    <ul class="film-features">
-      <li>${testt.averageRuntime}</li>
-      <li>${testt.genres}</li>
-      <li>${testt.language}</li>
-      <li>${testt.premiered}</li>
-    </ul>
-    <p class="film-description">${testt.summary}</p>
-    <h3>Comments</h3>
+    <h3 class="comments-title">Comments</h3>
     <ul class="film-comments"></ul>
     <h3>Add a comment</h3>
     <form class="film-form">
@@ -80,40 +81,55 @@ const popup = async (id) => {
   const child = document.createRange().createContextualFragment(node);
   pops.appendChild(child);
 
-  const closePopup = () => {
+  document.querySelector('.close-icon').onclick = () => {
     if (pops.classList.contains('display')) {
       pops.classList.remove('display');
       modal.classList.remove('overlay');
     }
   };
-  document.querySelector('.close-icon').addEventListener('click', closePopup);
-
   document.querySelector('.submit-btn').addEventListener('click', uiAddComment);
 };
 
-const test = async (id) => {
-  const testt = await getShows(id);
-  // console.log(testt);
-  const node = `<li class="show" id="li-${testt.id}">
-    <img src=${testt.image.medium} alt="#">
-    <h2>${testt.name}</h2>
-    <i class=material-symbols-outlined>favorite</i>
-    <button class="comment-btn" type="button">Comments</button>
-    <button class="reserv-btn" type="button">Reservations</button>
-  </li>`;
+const drawFilm = async (id, likes) => {
+  const show = await getShows(id);
+  const data = {
+    item_id: id,
+  };
+  const node = `
+  <li class="show" id="li-${show.id}">
+    <img src="${show.image.medium}" alt="#">
+    <h2>${show.name}</h2>
+    <i class="material-icons like-btn">favorite</i>
+    <span>${likes}</span>
+      <button class="comment-btn" type="button">Comments</button>
+      <button class="reserv-btn" type="button">Reservations</button>
+    </li>`;
   const child = document.createRange().createContextualFragment(node);
   shows.appendChild(child);
 
-  const commentBtn = (e) => {
+  shows.querySelector(`#li-${show.id} .comment-btn`).onclick = (e) => {
     popup(id);
     pops.classList.toggle('display', (e !== 'popups'));
     modal.classList.toggle('overlay', (e !== 'modal'));
   };
 
-  const commBtn = shows.querySelector(`#li-${testt.id} .comment-btn`);
-  commBtn.addEventListener('click', commentBtn);
+  shows.querySelector(`#li-${show.id} .like-btn`).onclick = (e) => {
+    like(data);
+    e.path[0].classList.toggle('liked');
+  };
 };
 
-for (let i = 1; i < 15; i += 1) {
-  test(i);
-}
+const render = async () => {
+  const testt = await getShows(7);
+  document.querySelector('.Headline').style.backgroundImage = `url('${testt.image.original}')`;
+
+  const likes = await getLikes();
+  for (let i = 1; i < 15; i += 1) {
+    likes.forEach((item) => {
+      if (i === item.item_id) {
+        drawFilm(i, item.likes);
+      }
+    });
+  }
+};
+render();

@@ -3,7 +3,7 @@ const getShows = async (id) => {
   return (await item).json();
 };
 
-// OMQRn6dO0Lpv7mbZqxZI
+// ZM5SRiezCaF5it5BhnA3
 
 // const createID = async () => {
 //   await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/', {
@@ -22,25 +22,14 @@ const like = async (data) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(data),
-  })
-    .then((response) => response);
+  });
 };
-
-const data = {
-  item_id: 1,
-};
-
-like(data);
 
 const getLikes = async () => {
-  await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OMQRn6dO0Lpv7mbZqxZI/likes')
-    .then((response) => response.text())
-    .then((data) => data);
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OMQRn6dO0Lpv7mbZqxZI/likes');
+  return response.json().then((data) => data);
 };
-getLikes();
-export { getShows, like };
 
-//
 // comments
 // '2lNkwmsdhFTsRqAGHt5J'
 const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
@@ -66,3 +55,5 @@ export const sendCommentApi = async (appId, body) => fetch('https://us-central1-
 
 export const getCommentsApi = async (appId, itemId) => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2lNkwmsdhFTsRqAGHt5J/comments?item_id=${itemId}`)
   .then((response) => response.json());
+
+export { getShows, like, getLikes };
