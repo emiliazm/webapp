@@ -1,11 +1,14 @@
 export const getShows = async (id) => {
-  const item = fetch(`https://api.tvmaze.com/shows/${id}`);
-  return (await item).json();
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}`)
+    .then((response) => response.json())
+    .then((data) => data);
+  return response;
 };
 
-// ZM5SRiezCaF5it5BhnA3
 // '2lNkwmsdhFTsRqAGHt5J'
 const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+const likesURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2lNkwmsdhFTsRqAGHt5J/likes/';
+
 export const newId = async (body) => fetch(url, {
   method: 'POST',
   body: JSON.stringify(body),
@@ -18,7 +21,7 @@ export const newId = async (body) => fetch(url, {
   .catch((error) => { throw error; });
 
 export const like = async (data) => {
-  await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OMQRn6dO0Lpv7mbZqxZI/likes/', {
+  await fetch(likesURL, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -28,8 +31,14 @@ export const like = async (data) => {
 };
 
 export const getLikes = async () => {
-  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OMQRn6dO0Lpv7mbZqxZI/likes');
-  return response.json().then((data) => data);
+  const call = await fetch(likesURL);
+  let response;
+  try {
+    response = await call.json().then((data) => data);
+  } catch (e) {
+    response = [];
+  }
+  return response;
 };
 
 // comments
