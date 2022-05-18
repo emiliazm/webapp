@@ -1,4 +1,8 @@
-import { getShows } from './api_handler.js';
+import {
+  getShows,
+  sendCommentApi,
+  getCommentsApi,
+} from './api_handler.js';
 
 const shows = document.querySelector('.shows');
 const pops = document.querySelector('.popups');
@@ -10,7 +14,7 @@ const popup = async (id) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops.removeChild(popCont); }
 
-  const node = `<div id="popCont">
+  const node = `<div id="popCont" data-id="${testt.id}">
     <div class="pop-header">
       <img class="film-img" src=${testt.image.medium} alt="episode">
       <i class="close-icon material-symbols-outlined">close</i>
@@ -42,6 +46,8 @@ const popup = async (id) => {
     }
   };
   document.querySelector('.close-icon').addEventListener('click', closePopup);
+
+  document.querySelector('.submit-btn').addEventListener('click', uiAddComment);
 };
 
 const test = async (id) => {
@@ -73,45 +79,42 @@ for (let i = 1; i < 15; i += 1) {
 
 // Comments
 
-const addComment = async (user, comment) => {
-  const newComment = { user, comment };
-  const response = await sendCommentApi(id, newComment);
+const appId = '2lNkwmsdhFTsRqAGHt5J';
+const addComment = async (itemId, username, comment) => {
+  console.log('addComment', itemId, username, comment);
+  const newComment = { item_id: itemId, username, comment };
+  const response = await sendCommentApi(appId, newComment);
   return response === 'Comment created correctly';
 };
 
-const getComments = async () => { getCommentsApi(id) };
-
 const uiDisplayComment = async (ulElement, comment) => {
-  const insideUl = `<li>${comment.user} : ${comment.comment}</li>`;
+  const insideUl = `<li>${comment.creation_date} ${comment.username} : ${comment.comment}</li>`;
   ulElement.innerHTML += insideUl;
-}
+};
 
-const uiDisplayComments = async () => {
+const uiDisplayComments = async (appId, itemId) => {
   const ulElement = document.querySelector('.film-comments');
   ulElement.innerHTML = '';
-  const list = await getComments();
-  list.forEach((comment) => uiDisplayComment(ulElement, comment))
-}
+  const list = await getCommentsApi(appId, itemId);
+  list.forEach((comment) => uiDisplayComment(ulElement, comment));
+};
 
 const uiAddComment = async (e) => {
-  // e.preventDefault();
-  let user = document.querySelector('.user-name').value;
-  user = user.charAt().toUpperCase() + user.slice(1).toLowerCase();
+  e.preventDefault();
+  const commentBtn = e.target;
+  const liElement = commentBtn.parentNode.parentNode;
+  const itemId = liElement.dataset.id;
+  let username = document.querySelector('.user-name').value;
+  username = username.charAt().toUpperCase() + username.slice(1).toLowerCase();
   const comment = document.querySelector('.user-comment').value;
   const form = document.querySelector('.film-form');
   const focus = document.querySelector('.user-name');
 
-  if (user !== null && score !== null && user.trim() !== '' && score.trim() !== '') {
-    addComment(user, parseInt(comment, 10)).then(() => {
-      uiDisplayComments();
+  if (username !== null && comment !== null && username.trim() !== '' && comment.trim() !== '') {
+    addComment(itemId, username, comment).then(() => {
+      uiDisplayComments(appId, itemId);
     });
     form.reset();
   }
   focus.focus();
-}
-
-const submitBtn = async () => {
-  document.querySelector('.submit-btn').addEventListener('click', uiAddComment);
-}
-
-console.log(submitBtn);
+};
