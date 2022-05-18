@@ -75,7 +75,7 @@ const popup = async (id) => {
     <form class="film-form">
       <input class="user-name" type="text" placeholder="Your name" required>
       <textarea class="user-comment" name="ta-comment" id="ta-comment" placeholder="Your insights" required></textarea>
-      <button class="submit-btn" type="button">Comment</button>
+      <button class="submit-btn" type="submit">Comment</button>
     </form>
   </div>`;
   const child = document.createRange().createContextualFragment(node);
