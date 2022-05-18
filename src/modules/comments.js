@@ -3,6 +3,7 @@ import {
   sendCommentApi,
   getCommentsApi,
 } from './api_handler.js';
+import { counterComm } from './tools.js';
 
 const pops = () => document.querySelector('.popups');
 const modal = () => document.querySelector('.modal');
@@ -12,6 +13,12 @@ const addComment = async (itemId, username, comment) => {
   const newComment = { item_id: itemId, username, comment };
   const response = await sendCommentApi(appId, newComment);
   return response === 'Comment created correctly';
+};
+
+const commentCounter = async () => {
+  const commentList = document.querySelector('.film-comments');
+  const count = commentList.children.length;
+  return count;
 };
 
 const uiDisplayComment = async (ulElement, comment) => {
@@ -24,6 +31,17 @@ const uiDisplayComments = async (appId, itemId) => {
   ulElement.innerHTML = '';
   const list = await getCommentsApi(appId, itemId);
   list.forEach((comment) => uiDisplayComment(ulElement, comment));
+  const count = await commentCounter();
+  counterComm(count);
+};
+
+const uiLoadComments = async () => {
+  const ulElement = document.querySelector('.film-comments');
+  const divElement = ulElement.parentNode;
+  const itemId = divElement.dataset.id;
+  if (ulElement !== '') {
+    await uiDisplayComments(ulElement, itemId);
+  }
 };
 
 const uiAddComment = async (e) => {
@@ -64,7 +82,7 @@ const popup = async (id) => {
        </ul>
        <p class="film-description">${show.summary}</p>
     </div>
-    <h3 class="comments-title">Comments</h3>
+    <h3 class="comments-title"></h3>
     <ul class="film-comments"></ul>
     <h3>Add a comment</h3>
     <form class="film-form">
@@ -82,14 +100,10 @@ const popup = async (id) => {
       modal().classList.remove('overlay');
     }
   };
+
   document.querySelector('.submit-btn').addEventListener('click', uiAddComment);
 
-  const ulElement = document.querySelector('.film-comments');
-  if (ulElement !== '') {
-    const divElement = ulElement.parentNode;
-    const itemId = divElement.dataset.id;
-    uiDisplayComments(ulElement, itemId);
-  }
+  await uiLoadComments();
 };
 
 export default popup;

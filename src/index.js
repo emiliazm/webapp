@@ -2,7 +2,7 @@ import './styles.css';
 import './modules/canvas_animation.js';
 import { getShows, getLikes } from './modules/api_handler.js';
 import drawFilm from './modules/likes.js';
-import counter from './modules/tools.js';
+import { counter } from './modules/tools.js';
 
 const render = async () => {
   const testt = await getShows(7);
