@@ -11,6 +11,47 @@ const modal = document.querySelector('.modal');
 const popup = async (id) => {
   const testt = await getShows(id);
 
+  // Comments
+
+  const appId = '2lNkwmsdhFTsRqAGHt5J';
+  const addComment = async (itemId, username, comment) => {
+    const newComment = { item_id: itemId, username, comment };
+    const response = await sendCommentApi(appId, newComment);
+    return response === 'Comment created correctly';
+  };
+
+  const uiDisplayComment = async (ulElement, comment) => {
+    const insideUl = `<li>${comment.creation_date} ${comment.username} : ${comment.comment}</li>`;
+    ulElement.innerHTML += insideUl;
+  };
+
+  const uiDisplayComments = async (appId, itemId) => {
+    const ulElement = document.querySelector('.film-comments');
+    ulElement.innerHTML = '';
+    const list = await getCommentsApi(appId, itemId);
+    list.forEach((comment) => uiDisplayComment(ulElement, comment));
+  };
+
+  const uiAddComment = async (e) => {
+    e.preventDefault();
+    const commentBtn = e.target;
+    const liElement = commentBtn.parentNode.parentNode;
+    const itemId = liElement.dataset.id;
+    let username = document.querySelector('.user-name').value;
+    username = username.charAt().toUpperCase() + username.slice(1).toLowerCase();
+    const comment = document.querySelector('.user-comment').value;
+    const form = document.querySelector('.film-form');
+    const focus = document.querySelector('.user-name');
+
+    if (username !== null && comment !== null && username.trim() !== '' && comment.trim() !== '') {
+      addComment(itemId, username, comment).then(() => {
+        uiDisplayComments(appId, itemId);
+      });
+      form.reset();
+    }
+    focus.focus();
+  };
+
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops.removeChild(popCont); }
 
@@ -76,44 +117,3 @@ const test = async (id) => {
 for (let i = 1; i < 15; i += 1) {
   test(i);
 }
-
-// Comments
-
-const appId = '2lNkwmsdhFTsRqAGHt5J';
-const addComment = async (itemId, username, comment) => {
-  const newComment = { item_id: itemId, username, comment };
-  const response = await sendCommentApi(appId, newComment);
-  return response === 'Comment created correctly';
-};
-
-const uiDisplayComment = async (ulElement, comment) => {
-  const insideUl = `<li>${comment.creation_date} ${comment.username} : ${comment.comment}</li>`;
-  ulElement.innerHTML += insideUl;
-};
-
-const uiDisplayComments = async (appId, itemId) => {
-  const ulElement = document.querySelector('.film-comments');
-  ulElement.innerHTML = '';
-  const list = await getCommentsApi(appId, itemId);
-  list.forEach((comment) => uiDisplayComment(ulElement, comment));
-};
-
-const uiAddComment = async (e) => {
-  e.preventDefault();
-  const commentBtn = e.target;
-  const liElement = commentBtn.parentNode.parentNode;
-  const itemId = liElement.dataset.id;
-  let username = document.querySelector('.user-name').value;
-  username = username.charAt().toUpperCase() + username.slice(1).toLowerCase();
-  const comment = document.querySelector('.user-comment').value;
-  const form = document.querySelector('.film-form');
-  const focus = document.querySelector('.user-name');
-
-  if (username !== null && comment !== null && username.trim() !== '' && comment.trim() !== '') {
-    addComment(itemId, username, comment).then(() => {
-      uiDisplayComments(appId, itemId);
-    });
-    form.reset();
-  }
-  focus.focus();
-};
