@@ -52,8 +52,8 @@ const popup = async (id) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops().removeChild(popCont); }
 
-  const node = `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
-    <i class="close-icon material-symbols-outlined">close</i>
+  const node = `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">  
+  <i class="close-icon material-symbols-outlined">close</i>
     <div class="container">
       <h2>${show.name}</h2>
        <ul>
