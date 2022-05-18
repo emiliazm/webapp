@@ -1,4 +1,7 @@
-const counter = (int) => {
+export const counter = (int) => {
   document.querySelector('.films-title').innerHTML = `Shows/Films (${int})`;
 };
-export default counter;
+
+export const counterComm = (int) => {
+  document.querySelector('.comments-title').innerHTML = `Comments (${int})`;
+};
