@@ -40,7 +40,7 @@ const getLikes = async () => {
 getLikes();
 export { getShows, like };
 
-// 
+//
 // comments
 // '2lNkwmsdhFTsRqAGHt5J'
 const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
