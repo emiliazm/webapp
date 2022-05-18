@@ -1,0 +1,12 @@
+POST https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2lNkwmsdhFTsRqAGHt5J/comments
+content-type: application/json
+
+{
+    "item_id": "item1",
+    "username": "Jane",
+    "comment": "Hello"
+}
+
+###
+GET https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2lNkwmsdhFTsRqAGHt5J/comments?item_id=1
+content-type: application/json
