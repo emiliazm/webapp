@@ -3,17 +3,110 @@
   padding: 0;
 }
 
+.Nav-bar {
+  position: fixed;
+  width: 100vw;
+}
+
+.Nav-bar h1 {
+  box-shadow: inset 0 50px 50px 0 rgba(0, 0, 0, 0.7);
+  line-height: 60px;
+  color: white;
+  text-align: center;
+}
+
+.Headline {
+  box-shadow: inset 0 -100px 200px 100px #111;
+  background-size: contain;
+  padding: 0 30px;
+  justify-content: space-between;
+  height: 60vh;
+}
+
+.Headline-wrapper {
+  height: 100%;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Headline h2 {
+  background-color: black;
+  padding: 10px;
+  color: white;
+  font-size: 40px;
+  width: 100%;
+  text-align: center;
+  margin: auto 0;
+}
+
+#canvas {
+  aspect-ratio: 5/3;
+  height: auto !important;
+  width: 40vw !important;
+}
+
+.Main-content {
+  box-shadow: 0 -40px 200px 50px #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #111;
+}
+
+.Main-content ul {
+  margin: auto 0;
+}
+
 .show {
   list-style: none;
   float: left;
   margin: 10px;
 }
 
-footer {
-  clear: both;
+.like-btn {
+  cursor: pointer;
+  color: gray;
+}
+
+.like-btn.liked {
+  color: red;
 }
 
 /* popup */
+#popCont {
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 -300px 70px 50px rgba(0, 0, 0, 0.85);
+  color: rgb(255, 255, 89);
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#popCont .close-icon {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+#popCont .container {
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 black;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#popCont ul {
+  list-style: none;
+  margin: 10px 0;
+}
+
+#popCont .comments-title {
+  margin-bottom: auto;
+}
+
 .popups {
   display: none;
 }
@@ -47,53 +140,6 @@ footer {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.Nav-bar {
-  position: fixed;
-  width: 100vw;
-}
-
-.Nav-bar h1 {
-  line-height: 60px;
-  background-color: #000;
-  color: white;
-  text-align: center;
-}
-
-.Headline {
-  box-shadow: inset -300px 0 700px 10px #000;
-  background-color: gray;
-  padding: 0 30px;
-  justify-content: space-between;
-  height: 60vh;
-}
-
-.Headline-wrapper {
-  height: 100%;
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.Headline h2 {
-  background-color: black;
-  color: white;
-  font-size: 40px;
-  width: 100%;
-  text-align: center;
-  margin: auto 0;
-}
-
-#canvas {
-  aspect-ratio: 5/3;
-  height: auto !important;
-  width: 40vw !important;
-}
-
-.like-btn {
-  cursor: pointer;
-  color: gray;
-}
-
-.like-btn.liked {
-  color: red;
+footer {
+  clear: both;
 }

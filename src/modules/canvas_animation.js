@@ -21,7 +21,7 @@ camera.rotation.x = 0.7;
 
 const loader = new GLTFLoader();
 let model;
-loader.load('./src/assets/remoteController.gltf', (gltf) => {
+loader.load('./remoteController.gltf', (gltf) => {
   model = gltf.scene;
   scene.add(model);
 });

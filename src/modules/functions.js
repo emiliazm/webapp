@@ -9,24 +9,33 @@ const popup = async (id) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops.removeChild(popCont); }
 
-  const node = `<div id="popCont">
+  const node = `<div id="popCont" style="background-image: url('${testt.image.original}');">
     <i class="close-icon material-icons">close</i>
-    <img class="film-img" src="${testt.image.medium}" alt="episode">
-    <h2>"${testt.name}"</h2>
-    <ul>
-      <li>"${testt.averageRuntime}"</li>
-      <li>"${testt.genres}"</li>
-      <li>"${testt.language}"</li>
-      <li>"${testt.premiered}"</li>
-    </ul>
-    <p class="film-description">"${testt.summary}"</p>
-    <h3>Comments</h3>
+    <div class="container">
+     <h2>${testt.name}</h2>
+      <ul>
+        <li>${testt.averageRuntime}min</li>
+        <li>${testt.genres}</li>
+        <li>${testt.language}</li>
+        <li>${testt.premiered}</li>
+      </ul>
+      <p class="film-description">${testt.summary}</p>
+    </div>
+    <h3 class="comments-title">Comments</h3>
     <ul class="film-comments"></ul>
     <h3>Add a comment</h3>
     <form class="film-form">
-      <input type="text" placeholder="Your name" required>
-      <textarea name="ta-comment" id="ta-comment" placeholder="Your insights" required></textarea>
-      <button type="submit">Comment</button>
+      <ul>
+        <li>
+          <input type="text" placeholder="Your name" required>
+        </li>
+        <li>
+          <textarea name="ta-comment" id="ta-comment" placeholder="Your insights"></textarea>
+        </li>
+        <li>
+          <button type="submit">Comment</button>
+        </li>
+      </ul>
     </form>
   </div>`;
   const child = document.createRange().createContextualFragment(node);
@@ -47,7 +56,7 @@ const drawFilm = async (id, likes) => {
   const node = `
   <li class="show" id="li-${show.id}">
     <img src="${show.image.medium}" alt="#">
-    <h2>"${show.name}"</h2>
+    <h2>${show.name}</h2>
     <i class="material-icons like-btn">favorite</i>
     <span>${likes}</span>
     <button class="comment-btn" type="button">Comments</button>
@@ -68,6 +77,9 @@ const drawFilm = async (id, likes) => {
 };
 
 const render = async () => {
+  const testt = await getShows(7);
+  document.querySelector('.Headline').style.backgroundImage = `url('${testt.image.original}')`;
+
   const likes = await getLikes();
   for (let i = 1; i < 15; i += 1) {
     likes.forEach((item) => {

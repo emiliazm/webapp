@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(glb|gltf)$/i,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
+          name: '[name].[ext]',
         },
       },
       {
