@@ -15,9 +15,12 @@ const light1 = new THREE.PointLight(0xfffacd, 2, 0);
 light1.position.set(100, 200, 300);
 scene.add(light1);
 
-camera.position.y = -3;
-camera.position.z = 7;
-camera.rotation.x = 0.7;
+camera.position.y = 7;
+camera.position.z = 4;
+camera.position.x = 5;
+camera.rotation.y = 0.5;
+camera.rotation.x = -1;
+camera.rotation.z = 1.6;
 
 const loader = new GLTFLoader();
 let model;
@@ -38,11 +41,20 @@ function resizeCanvasToDisplaySize() {
   }
 }
 
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  camera.position.z = 4 + t * 0.005;
+  camera.position.x = 5 + t * 0.0009;
+  camera.position.y = 7 + t * 0.01;
+  camera.rotation.y = 0.5 + t * -0.003;
+}
+document.body.onscroll = moveCamera;
+
 const animate = () => {
   resizeCanvasToDisplaySize();
   requestAnimationFrame(animate);
   if (model !== undefined) {
-    model.rotation.y += 0.007;
+    model.rotation.x += 0.007;
   }
   renderer.render(scene, camera);
 };
