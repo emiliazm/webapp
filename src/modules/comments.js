@@ -22,7 +22,7 @@ const commentCounter = async () => {
 };
 
 const uiDisplayComment = async (ulElement, comment) => {
-  const insideUl = `<li>${comment.creation_date} ${comment.username} : ${comment.comment}</li>`;
+  const insideUl = `<li>${comment.creation_date} &nbsp ${comment.username} : ${comment.comment}</li>`;
   ulElement.innerHTML += insideUl;
 };
 
@@ -70,15 +70,16 @@ const popup = async (id) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops().removeChild(popCont); }
 
-  const node = `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
+  const node = `<div id="popCont" data-id="${show.id}">
+    <img class="film-img" src="${show.image.medium}" alt="episode">
     <i class="close-icon material-symbols-outlined">close</i>
     <div class="container">
       <h2>${show.name}</h2>
        <ul>
-         <li>${show.averageRuntime}min</li>
-         <li>${show.genres}</li>
-         <li>${show.language}</li>
-         <li>${show.premiered}</li>
+         <li><b>Avarege Runtime</b>: ${show.averageRuntime}min</li>
+         <li><b>Genres</b> : ${show.genres}</li>
+         <li><b>Language</b>: ${show.language}</li>
+         <li><b>Premiered</b>: ${show.premiered}</li>
        </ul>
        <p class="film-description">${show.summary}</p>
     </div>
@@ -86,8 +87,8 @@ const popup = async (id) => {
     <ul class="film-comments"></ul>
     <h3>Add a comment</h3>
     <form class="film-form">
-      <input class="user-name" type="text" placeholder="Your name" required>
-      <textarea class="user-comment" name="ta-comment" id="ta-comment" placeholder="Your insights" required></textarea>
+      <input class="user-name font" type="text" placeholder="Your name" maxlength="20" required>
+      <textarea class="user-comment font" name="ta-comment" id="ta-comment" placeholder="Your insights" maxlength="150" required></textarea>
       <button class="submit-btn" type="button">Comment</button>
     </form>
   </div>`;
