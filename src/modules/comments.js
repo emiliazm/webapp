@@ -4,8 +4,8 @@ import {
   getCommentsApi,
 } from './api_handler.js';
 
-const pops = document.querySelector('.popups');
-const modal = document.querySelector('.modal');
+const pops = () => document.querySelector('.popups');
+const modal = () => document.querySelector('.modal');
 
 const appId = '2lNkwmsdhFTsRqAGHt5J';
 const addComment = async (itemId, username, comment) => {
@@ -47,22 +47,22 @@ const uiAddComment = async (e) => {
 };
 
 const popup = async (id) => {
-  const testt = await getShows(id);
+  const show = await getShows(id);
 
   const popCont = document.querySelector('#popCont');
-  if (popCont) { pops.removeChild(popCont); }
+  if (popCont) { pops().removeChild(popCont); }
 
-  const node = `<div id="popCont" data-id="${testt.id}" style="background-image: url('${testt.image.original}');">
+  const node = `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
     <i class="close-icon material-symbols-outlined">close</i>
     <div class="container">
-      <h2>${testt.name}</h2>
+      <h2>${show.name}</h2>
        <ul>
-         <li>${testt.averageRuntime}min</li>
-         <li>${testt.genres}</li>
-         <li>${testt.language}</li>
-         <li>${testt.premiered}</li>
+         <li>${show.averageRuntime}min</li>
+         <li>${show.genres}</li>
+         <li>${show.language}</li>
+         <li>${show.premiered}</li>
        </ul>
-       <p class="film-description">${testt.summary}</p>
+       <p class="film-description">${show.summary}</p>
     </div>
     <h3 class="comments-title">Comments</h3>
     <ul class="film-comments"></ul>
@@ -74,15 +74,22 @@ const popup = async (id) => {
     </form>
   </div>`;
   const child = document.createRange().createContextualFragment(node);
-  pops.appendChild(child);
+  pops().appendChild(child);
 
   document.querySelector('.close-icon').onclick = () => {
-    if (pops.classList.contains('display')) {
-      pops.classList.remove('display');
-      modal.classList.remove('overlay');
+    if (pops().classList.contains('display')) {
+      pops().classList.remove('display');
+      modal().classList.remove('overlay');
     }
   };
   document.querySelector('.submit-btn').addEventListener('click', uiAddComment);
+
+  const ulElement = document.querySelector('.film-comments');
+  if (ulElement !== '') {
+    const divElement = ulElement.parentNode;
+    const itemId = divElement.dataset.id;
+    uiDisplayComments(ulElement, itemId);
+  }
 };
 
 export default popup;
