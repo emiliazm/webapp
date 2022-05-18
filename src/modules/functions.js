@@ -6,7 +6,7 @@ import {
 
 const shows = document.querySelector('.shows');
 const pops = document.querySelector('.popups');
-const modal = document.querySelector('.modal')
+const modal = document.querySelector('.modal');
 
 const popup = async (id) => {
   const testt = await getShows(id);
@@ -81,7 +81,6 @@ for (let i = 1; i < 15; i += 1) {
 
 const appId = '2lNkwmsdhFTsRqAGHt5J';
 const addComment = async (itemId, username, comment) => {
-  console.log('addComment', itemId, username, comment);
   const newComment = { item_id: itemId, username, comment };
   const response = await sendCommentApi(appId, newComment);
   return response === 'Comment created correctly';
