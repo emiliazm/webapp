@@ -86,7 +86,6 @@ h3 {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  
   /* background: rgb(34, 129, 195);
   background: linear-gradient(0deg, rgba(34, 129, 195, 1) 0%, rgba(0, 0, 0, 1) 100%); */
   background: rgb(2, 0, 36);
@@ -94,6 +93,12 @@ h3 {
   color: white;
   padding: 2em;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.head {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .pop-header {

@@ -64,6 +64,7 @@ const uiAddComment = async (e) => {
   focus.focus();
 };
 
+// <img class="film-img" src="${show.image.medium}" alt="episode">
 const popup = async (id) => {
   const show = await getShows(id);
 
@@ -71,8 +72,9 @@ const popup = async (id) => {
   if (popCont) { pops().removeChild(popCont); }
 
   const node = `<div id="popCont" data-id="${show.id}">
-    <img class="film-img" src="${show.image.medium}" alt="episode">
-    <i class="close-icon material-symbols-outlined">close</i>
+    <div class="head" style="background-image: url('${show.image.original}');">
+      <i class="close-icon material-symbols-outlined">close</i>
+    </div>
     <div class="container">
       <h2>${show.name}</h2>
        <ul>
