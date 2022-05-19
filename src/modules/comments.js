@@ -1,5 +1,4 @@
 import {
-  getShows,
   sendCommentApi,
   getCommentsApi,
 } from './api_handler.js';
@@ -66,9 +65,7 @@ const uiAddComment = async (e) => {
 
 // <img class="film-img" src="${show.image.medium}" alt="episode">
 // `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
-const popup = async (id) => {
-  const show = await getShows(id);
-
+const popup = async (show) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops().removeChild(popCont); }
 
