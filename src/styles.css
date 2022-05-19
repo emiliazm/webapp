@@ -4,13 +4,16 @@
 }
 
 .Nav-bar {
+  box-shadow: inset 0 50px 20px 30px #111;
   z-index: 999;
   position: fixed;
   width: 100vw;
+  padding-bottom: 50px;
 }
 
 .Nav-bar h1 {
-  box-shadow: inset 0 50px 50px 0 rgba(0, 0, 0, 0.7);
+  font-family: 'Grape Nuts', sans-serif;
+  font-size: 50px;
   line-height: 60px;
   color: white;
   text-align: center;
@@ -22,6 +25,7 @@
   background-repeat: no-repeat;
   background-position: center -10vw;
   padding: 0 30px;
+  padding-top: 20px;
   justify-content: space-between;
   height: 60vh;
 }
@@ -78,9 +82,15 @@ h3 {
   display: flex;
   flex-direction: column;
   background-color: #111;
+  padding: 0 5vw;
 }
 
 /* shows */
+.films-title {
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
 
 .shows {
   font-family: 'Raleway', sans-serif;
