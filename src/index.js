@@ -9,6 +9,7 @@ import './assets/twitter.png';
 import './assets/linkedin.png';
 import './assets/portfolio.png';
 
+document.querySelector('.Headline').style.backgroundImage = 'url("./background.gif")';
 const render = async () => {
   const headline = await getShows(1);
   const likes = await getLikes();
