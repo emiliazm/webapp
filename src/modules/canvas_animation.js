@@ -11,8 +11,12 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const light1 = new THREE.PointLight(0xfffacd, 2, 0);
-light1.position.set(100, 200, 300);
+const light2 = new THREE.PointLight(0xe1f3a5, 2, 0);
+light2.position.set(-90, -100, -100);
+scene.add(light2);
+
+const light1 = new THREE.PointLight(0xc7a6f7, 2, 0);
+light1.position.set(-60, 50, 300);
 scene.add(light1);
 
 camera.position.y = 7;
