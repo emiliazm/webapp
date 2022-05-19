@@ -3,18 +3,27 @@ import './modules/canvas_animation.js';
 import { getShows, getLikes } from './modules/api_handler.js';
 import drawFilm from './modules/likes.js';
 import { counter } from './modules/tools.js';
+import './assets/background.gif';
+import './assets/github.png';
+import './assets/twitter.png';
+import './assets/linkedin.png';
+import './assets/portfolio.png';
 
+document.querySelector('.Headline').style.backgroundImage = 'url("./background.gif")';
 const render = async () => {
-  const testt = await getShows(7);
-  const likes = await getLikes() || [];
+  const headline = await getShows(1);
+  const likes = await getLikes();
+
+  const likeContainer = [];
+  likes.forEach((item) => {
+    likeContainer[item.item_id] = item.likes;
+  });
+
   for (let i = 1; i < 15; i += 1) {
-    likes.forEach((item) => {
-      if (i === item.item_id) {
-        drawFilm(i, item.likes || 0);
-        counter(i);
-      }
-    });
+    drawFilm(i, likeContainer[i] || 0);
+    counter(i);
   }
-  document.querySelector('.Headline').style.backgroundImage = `url('${testt.image.original}')`;
+  document.querySelector('.Headline-wrapper').style.backgroundImage = `url('${headline.image.original}')`;
+  document.querySelector('.Headline-title h2').innerHTML = headline.name;
 };
 render();

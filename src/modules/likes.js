@@ -13,11 +13,14 @@ const drawFilm = async (id, likes) => {
   const node = `
   <li class="show" id="li-${show.id}">
     <img src="${show.image.medium}" alt="#">
-    <h2>${show.name}</h2>
-    <i class="material-icons like-btn">favorite</i>
-    <span>${likes}</span>
-      <button class="comment-btn" type="button">Comments</button>
-      <button class="reserv-btn" type="button">Reservations</button>
+    <p>${show.name}</p>
+    <div class="film-nav">
+      <i class="material-icons comment-btn">comment</i>
+      <div class="like-wrapper">
+        <i class="material-icons like-btn">favorite</i>
+        <span>${likes}</span>
+      </div>
+    </div>
     </li>`;
   const child = document.createRange().createContextualFragment(node);
   shows.appendChild(child);
