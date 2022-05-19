@@ -11,12 +11,22 @@
   padding-bottom: 50px;
 }
 
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
 .Nav-bar h1 {
   font-family: 'Grape Nuts', sans-serif;
   font-size: 50px;
   line-height: 60px;
   color: white;
   text-align: center;
+}
+
+.logo-header {
+  width: 60px;
 }
 
 .Headline {
@@ -177,7 +187,6 @@ h3 {
   font-family: 'Abel', sans-serif;
   font-weight: lighter;
   font-size: small;
-  width: 100%;
 }
 
 .pop-header {
@@ -300,8 +309,8 @@ footer {
 .logo-cont {
   display: flex;
   align-items: center;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: large;
+  font-family: 'Grape Nuts', sans-serif;
+  font-size: x-large;
 }
 
 .logo {
@@ -331,6 +340,7 @@ footer {
   float: right;
   gap: 10px;
   width: fit-content;
+  font-size: small;
 }
 
 .authors p {
