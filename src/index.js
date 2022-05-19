@@ -8,6 +8,7 @@ import './assets/github.png';
 import './assets/twitter.png';
 import './assets/linkedin.png';
 import './assets/portfolio.png';
+import './assets/logo-white.png';
 
 document.querySelector('.Headline').style.backgroundImage = 'url("./background.gif")';
 const render = async () => {

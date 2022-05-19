@@ -276,18 +276,33 @@ button:active {
 
 /* footer */
 footer {
-  padding-top: 15vh;
-  display: table;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
   background-color: #111;
   color: #fff;
-  min-height: 150px;
-  width: 100%;
+  min-height: 20px;
+  font-family: 'Abel', sans-serif;
+}
+
+.logo-cont {
+  display: flex;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+}
+
+.logo {
+  width: 50px;
+  margin: 0;
 }
 
 .license {
-  padding-left: 5vw;
   float: left;
   width: 40vw;
+  font-size: 12px;
 }
 
 .license p {
@@ -297,16 +312,20 @@ footer {
 .license .material-icons {
   color: #fff;
   padding: 7px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .authors {
+  display: flex;
+  flex-direction: column;
   float: right;
-  width: 40vw;
+  gap: 10px;
+  width: fit-content;
 }
 
 .authors p {
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 hr {
