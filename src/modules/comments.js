@@ -63,8 +63,6 @@ const uiAddComment = async (e) => {
   focus.focus();
 };
 
-// <img class="film-img" src="${show.image.medium}" alt="episode">
-// `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
 const popup = async (show) => {
   const popCont = document.querySelector('#popCont');
   if (popCont) { pops().removeChild(popCont); }
