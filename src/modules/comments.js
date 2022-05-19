@@ -64,8 +64,6 @@ const uiAddComment = async (e) => {
   focus.focus();
 };
 
-// <img class="film-img" src="${show.image.medium}" alt="episode">
-// `<div id="popCont" data-id="${show.id}" style="background-image: url('${show.image.original}');">
 const popup = async (id) => {
   const show = await getShows(id);
 
