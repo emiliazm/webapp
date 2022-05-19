@@ -53,4 +53,12 @@ export const sendCommentApi = async (appId, body) => fetch('https://us-central1-
   .then((response) => response.text());
 
 export const getCommentsApi = async (appId, itemId) => fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/G6sTBR9o5mr20X2Vf2Hw/comments?item_id=${itemId}`)
-  .then((response) => response.json());
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return [];
+  })
+  .catch((error) => {
+    throw error;
+  });
