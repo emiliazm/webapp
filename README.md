@@ -3,7 +3,7 @@
 # Filmer
 
 > Hello!
-Filmer is a website that gives you information about the lastes films and shows. Re-creating this website you will see how to give some functionality to your sections and make your website more user-interactive. Also you will see how to use callbacks and promises, proper ES6 syntax, webpack to bundle JavaScript, jest and API.
+Filmer is a website that gives you information about the latest films and shows. Re-creating this website you will see how to give some functionality to your sections and make your website more user-interactive. Also you will see how to use callbacks and promises, proper ES6 syntax, webpack to bundle JavaScript, jest and API.
 
 
 ## Built With
@@ -33,7 +33,7 @@ Setting up this project locally:
 
 ### Prerequisites
 
-##### Interfaces
+#### Interfaces
 Create your own web application based on an external API. The web app must contain:
 - First, you need to find an API so you can base the development of the webapp around it. The API should allow you to:
   - Get a list of items with a unique item id (or generate the unique id).
@@ -61,7 +61,7 @@ Create your own web application based on an external API. The web app must conta
   - The number of items (home).
   - The number of comments (comments popup).
 
-##### Technical set up
+#### Technical set up
  - Set up the repository on GitHub and use Gitflow.
  - Set up webpack.
  - Set up a JavaScript testing library (Jest).
