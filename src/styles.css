@@ -4,6 +4,7 @@
 }
 
 .Nav-bar {
+  z-index: 999;
   position: fixed;
   width: 100vw;
 }
@@ -16,16 +17,21 @@
 }
 
 .Headline {
-  box-shadow: inset 0 -100px 150px 90px #111;
-  background-size: contain;
+  box-shadow: inset 0 -100px 150px 50px #111;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 0 30px;
   justify-content: space-between;
   height: 60vh;
 }
 
 .Headline-wrapper {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 5vw center;
   height: 100%;
   display: flex;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -36,7 +42,19 @@ h3 {
   margin: 0;
 }
 
-.Headline h2 {
+.Headline-title {
+  margin: auto 0;
+}
+
+.Headline-title p {
+  color: #fff;
+  display: table;
+  background-color: rgb(180, 57, 57);
+  padding: 0 10px;
+  transform: translate(10px, 5px) rotate(-3deg);
+}
+
+.Headline-title h2 {
   background-color: black;
   padding: 10px;
   color: white;
@@ -47,36 +65,66 @@ h3 {
 }
 
 #canvas {
-  aspect-ratio: 5/3;
+  aspect-ratio: 1/2;
   height: auto !important;
   width: 40vw !important;
 }
 
 .Main-content {
-  box-shadow: 0 -40px 200px 50px #111;
+  position: relative;
+  box-shadow: 0 -60px 60px 20px #111;
   color: #fff;
   display: flex;
   flex-direction: column;
   background-color: #111;
 }
 
-.Main-content ul {
-  margin: auto 0;
+/* shows */
+
+.shows {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 7px;
+  padding-bottom: 10vh;
 }
 
 .show {
+  border: rgb(75, 75, 75) solid 1px;
+  border-radius: 5px;
   list-style: none;
-  float: left;
-  margin: 10px;
+  margin: 15px auto;
+  box-shadow: 5px 5px 5px 0 #000;
 }
 
-.like-btn {
+.show img {
+  border-radius: 5px 5px 0 0;
   cursor: pointer;
-  color: gray;
+}
+
+.show p {
+  padding-top: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.material-icons {
+  cursor: pointer;
+  font-size: 20px;
+  color: rgb(170, 170, 170);
+}
+
+.like-wrapper {
+  float: right;
 }
 
 .like-btn.liked {
   color: red;
+}
+
+.film-nav {
+  padding: 5px 15px;
 }
 
 /* popup */
@@ -181,5 +229,47 @@ textarea {
 }
 
 footer {
-  clear: both;
+  padding-top: 15vh;
+  display: table;
+  background-color: #111;
+  color: #fff;
+  min-height: 150px;
+  width: 100%;
+}
+
+.license {
+  padding-left: 5vw;
+  float: left;
+  width: 40vw;
+}
+
+.license p {
+  margin: 10px 0;
+}
+
+.license .material-icons {
+  color: #fff;
+  padding: 7px;
+  font-size: 30px;
+}
+
+.authors {
+  float: right;
+  width: 40vw;
+}
+
+.authors p {
+  margin-bottom: 10px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: rgb(83, 83, 83);
+}
+
+.author-link {
+  margin: 0 7px;
+  width: auto;
+  height: 25px;
 }
