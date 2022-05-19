@@ -11,20 +11,22 @@ import './assets/portfolio.png';
 import './assets/logo-white.png';
 
 document.querySelector('.Headline').style.backgroundImage = 'url("./background.gif")';
-const render = async () => {
-  const headline = await getShows(1);
-  const likes = await getLikes();
 
+let count = 0;
+const render = async () => {
+  const shows = await getShows();
+  const likes = await getLikes();
+  document.querySelector('.Headline-wrapper').style.backgroundImage = `url('${shows[0].image.original}')`;
+  document.querySelector('.Headline-title h2').innerHTML = shows[0].name;
   const likeContainer = [];
   likes.forEach((item) => {
     likeContainer[item.item_id] = item.likes;
   });
 
-  for (let i = 1; i < 15; i += 1) {
-    drawFilm(i, likeContainer[i] || 0);
-    counter(i);
-  }
-  document.querySelector('.Headline-wrapper').style.backgroundImage = `url('${headline.image.original}')`;
-  document.querySelector('.Headline-title h2').innerHTML = headline.name;
+  shows.forEach((element) => {
+    count += 1;
+    drawFilm(element, likeContainer[element.id] || 0);
+    counter(count);
+  });
 };
 render();

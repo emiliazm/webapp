@@ -1,5 +1,5 @@
-export const getShows = async (id) => {
-  const response = await fetch(`https://api.tvmaze.com/shows/${id}`)
+export const getShows = async () => {
+  const response = await fetch('https://api.tvmaze.com/shows')
     .then((response) => response.json())
     .then((data) => data);
   return response;
