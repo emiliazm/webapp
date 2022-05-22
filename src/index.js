@@ -29,7 +29,6 @@ const render = async () => {
     genresWrapper.appendChild(child);
 
     const genresContainer = document.getElementById(`${genres[i]}`);
-    console.log(genresContainer);
     shows.forEach((show) => {
       if (show.genres.includes(`${genres[i]}`)) {
         likes.forEach((like) => {
