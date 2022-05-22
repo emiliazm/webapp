@@ -5,6 +5,8 @@ const pops = document.querySelector('.popups');
 const modal = document.querySelector('.modal');
 
 const drawFilm = async (film, likes, nodee) => {
+  console.log('ss');
+
   const node = `
   <li class="film" id="li-${film.id}">
     <a href="${film.url}"><img src="${film.image.medium}" class="img" alt="#"></a>
