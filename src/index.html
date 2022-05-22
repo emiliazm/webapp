@@ -6,64 +6,122 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Grape+Nuts&family=Raleway:wght@100&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Grape+Nuts&family=Raleway:wght@100&display=swap"
+    rel="stylesheet">
   <title>Webapp</title>
 </head>
 
 <body>
-  <header class="Nav-bar">
-    <div class="nav">
-      <img class="logo-header" src="./logo-white.png" alt="Logo">
-    <h1>Filmer</h1>
+  <nav>
+    <div class="logo">
+      <img class="nav-icon" src="./logo-white.png" alt="Logo">
+      <p>Filmer</p>
+    </div>
+  </nav>
+
+  <header class="headline">
+    <div class="headline-wrapper">
+      <div class="headline-title">
+        <p>new film</p>
+        <h2>Temporary title</h2>
+      </div>
+      <canvas id="canvas"></canvas>
     </div>
   </header>
-  <main>
 
-    <header class="Headline">
-      <div class="Headline-wrapper">
-        <div class="Headline-title">
-          <p>new film</p>
-          <h2>Temporary title</h2>
-        </div>
-        <canvas id="canvas"></canvas>
+  <div class="filmsContainer">
+    <button class="genreSearch" type="button"><i class="material-symbols-outlined">sort</i></button>
+    <form class="genreFilter" name="filter">
+      <div class="filterFilm">
+        <label for="Drama">Drama</label>
+        <input id="Drama" type="checkbox">
       </div>
-    </header>
+      <div class="filterFilm">
+        <label for="Action">Action</label>
+        <input id="Action" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Adventure">Adventure</label>
+        <input id="Adventure" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Crime">Crime</label>
+        <input id="Crime" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Comedy">Comedy</label>
+        <input id="Comedy" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Western">Western</label>
+        <input id="Western" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Anime">Anime</label>
+        <input id="Anime" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Thriller">Thriller</label>
+        <input id="Thriller" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Horror">Horror</label>
+        <input id="Horror" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Romance">Romance</label>
+        <input id="Romance" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Music">Music</label>
+        <input id="Music" type="checkbox">
+      </div>
+      <div class="filterFilm">
+        <label for="Sports">Sports</label>
+        <input id="Sports" type="checkbox">
+      </div>
+      <div class="filterSearch">
+        <button type="button" class="filterSearchButton">Show</button>
+      </div>
+    </form>
 
-    <section class="Main-content">
-      <h2 class="films-title">Shows/Films</h2>
-      <div class="shows-wrapper">
-        <ul class="shows"></ul>
-      </div>
-    </section>
+    <div class="genreWrapper">
+
+    </div>
 
     <div class="popups"></div>
     <div class="modal"></div>
+  </div>
 
-  </main>
   <hr>
   <footer>
     <div class="license">
       <div class="logo-cont">
-        <img class="logo" src="./logo-white.png" alt="Logo">
+        <img class="nav-icon" src="./logo-white.png" alt="Logo">
         <p>Filmer</p>
       </div>
-        <p>This website is not used for material or commercial purposes. Please give appropriate credit if you copy this template.</p>
-        <i class="material-icons">money_off_csred</i>
+      <p>This website is not used for material or commercial purposes. Please give appropriate credit if you copy this
+        template.</p>
+      <i class="material-icons">money_off_csred</i>
       <i class="material-icons">man</i>
     </div>
     <div class="authors">
       <h3>Created by:</h3>
       <p>Illia Dubrovin: <a href="https://github.com/aliveGUY"><img class="author-link" src="./github.png" alt="#"></a>
-        <a href="https://www.linkedin.com/in/illia-dubrovin-921a2721b/"><img class="author-link" src="./linkedin.png" alt="#"></a>
+        <a href="https://www.linkedin.com/in/illia-dubrovin-921a2721b/"><img class="author-link" src="./linkedin.png"
+            alt="#"></a>
         <a href="https://aliveguy.github.io/"><img class="author-link" src="./portfolio.png" alt=""></a>
         <a href="https://twitter.com/Sciborskyy"><img class="author-link" src="./twitter.png" alt="#"></a>
       </p>
       <p>Emilia Zambrano: <a href="https://github.com/emiliazm"><img class="author-link" src="./github.png" alt="#"></a>
-        <a href="https://www.linkedin.com/in/emilia-zambrano-montero-aa30a611b/"><img class="author-link" src="./linkedin.png" alt="#"></a>
+        <a href="https://www.linkedin.com/in/emilia-zambrano-montero-aa30a611b/"><img class="author-link"
+            src="./linkedin.png" alt="#"></a>
         <a href="https://emiliazm.github.io/Portfolio/"><img class="author-link" src="./portfolio.png" alt=""></a>
         <a href="https://twitter.com/emilia_zm"><img class="author-link" src="./twitter.png" alt="#"></a>
       </p>
