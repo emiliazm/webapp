@@ -27,7 +27,7 @@ Setting up this project locally:
 
 ## Live Demo (if available)
 
-[Live Demo Link] (https://emiliazm.github.io/webapp/)
+[Live Demo Link](https://emiliazm.github.io/webapp/)
 
 
 
