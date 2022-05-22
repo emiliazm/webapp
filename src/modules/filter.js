@@ -21,7 +21,7 @@ buttonFilter.onclick = () => {
   }
 };
 
-form.onsubmit = () => {
+form[12].onclick = () => {
   const data = [];
   let index = 0;
   for (let i = 0; i < length; i += 1) {
@@ -31,4 +31,5 @@ form.onsubmit = () => {
     }
   }
   localStorage.setItem('Filter', JSON.stringify(data));
+  document.location.reload();
 };
