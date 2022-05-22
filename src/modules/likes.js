@@ -1,14 +1,13 @@
 import { like } from './api_handler.js';
 import popup from './comments.js';
 
-const shows = document.querySelector('.shows');
 const pops = document.querySelector('.popups');
 const modal = document.querySelector('.modal');
 
-const drawFilm = async (film, likes) => {
+const drawFilm = async (film, likes, nodee) => {
   const node = `
-  <li class="show" id="li-${film.id}">
-    <a href="${film.url}"><img src="${film.image.medium}" alt="#"></a>
+  <li class="film" id="li-${film.id}">
+    <a href="${film.url}"><img src="${film.image.medium}" class="img" alt="#"></a>
     <p>${film.name}</p>
     <div class="film-nav">
       <i class="material-icons comment-btn">comment</i>
@@ -17,17 +16,17 @@ const drawFilm = async (film, likes) => {
         <span>${likes}</span>
       </div>
     </div>
-    </li>`;
+  </li>`;
   const child = document.createRange().createContextualFragment(node);
-  shows.appendChild(child);
+  nodee.appendChild(child);
 
-  shows.querySelector(`#li-${film.id} .comment-btn`).onclick = (e) => {
+  nodee.querySelector(`#li-${film.id} .comment-btn`).onclick = (e) => {
     popup(film);
     pops.classList.toggle('display', (e !== 'popups'));
     modal.classList.toggle('overlay', (e !== 'modal'));
   };
 
-  shows.querySelector(`#li-${film.id} .like-btn`).onclick = (e) => {
+  nodee.querySelector(`#li-${film.id} .like-btn`).onclick = (e) => {
     e.composedPath()[0].classList.toggle('liked');
     if (e.composedPath()[0].classList.contains('liked')) {
       like({ item_id: film.id });

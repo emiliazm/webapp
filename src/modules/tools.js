@@ -1,5 +1,5 @@
-export const counter = (int) => {
-  document.querySelector('.films-title').innerHTML = `Shows/Films (${int})`;
+export const counter = (int, node) => {
+  document.querySelector(`.${node}`).innerHTML = `${node}(${int})`;
 };
 
 export const counterComm = (int) => {
